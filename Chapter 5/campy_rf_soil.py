@@ -22,7 +22,7 @@ from sklearn.metrics import roc_curve, roc_auc_score
 import joblib
 
 import sys
-sys.path.append('/Users/cegolden/Projects/Weather/Model_Development/')
+sys.path.append('<your_file_path>')
 
 
 #to determine run time of script
@@ -33,7 +33,7 @@ def LoadData():
     global X_train, X_test, y_train, y_test, soil
     global feature_columns, n_features, response_column
 
-    full = pd.read_excel("/Users/cegolden/Projects/Weather/Model_Development/Copy_of_Meteorological_poultry_data.xlsx", sheet_name = "Campylobacter")
+    full = pd.read_excel("<your_file_path>", sheet_name = "Campylobacter")
 
     #delete indicator variables
     full = full.drop(full.columns[[0, 1, 2, 4, 5, 7]], axis=1)

@@ -1,7 +1,7 @@
 import psycopg2
 
 import sys
-sys.path.append('/Users/cegolden/Projects/Weather/Forecast_Upload')
+sys.path.append('<your_file_path>')
 
 from json_parser_weather import json_parser
 from get_past_weather import get_past_weather
@@ -21,7 +21,7 @@ import joblib
 
 
 #establish a connection to the database of interest where table is present
-conn = psycopg2.connect("host=localhost dbname=weather_app user=mishralab password=rainbow")
+conn = psycopg2.connect("host=localhost dbname=<your_db_name> user=<your_user_name> password=<your_password>')
 cur = conn.cursor()
 
 cur.execute("SELECT DISTINCT ON (zip_code) id, zip_code, forecast, date FROM zip_forecast_app ORDER BY zip_code, id DESC;")
@@ -130,11 +130,11 @@ for i in range(0,9):
 final_all_days = final_one_day + final_two_day + final_three_day + final_four_day + final_five_day + final_six_day + final_seven_day
 
 #make predictions
-campy_feces = joblib.load('/Users/cegolden/Projects/Weather/Model_Development/campy_rf_feces.pkl')
-campy_soil = joblib.load('/Users/cegolden/Projects/Weather/Model_Development/campy_rf_soil.pkl')
+campy_feces = joblib.load('<your_file_path>')
+campy_soil = joblib.load('<your_file_path>')
 
 #establish a connection to the database of interest where table is present
-conn = psycopg2.connect("host=localhost dbname=weather_app user=mishralab password=rainbow")
+conn = psycopg2.connect("host=localhost dbname=<your_db_name> user=<your_user_name> password=<your_passwork>")
 cur = conn.cursor()
 
 for i in range(0, len(final_all_days)):
